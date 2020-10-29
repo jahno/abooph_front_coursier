@@ -1,16 +1,18 @@
 import React, { Fragment, useState, useRef } from 'react';
-import { useRouteMatch, Link } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import Straighten from '@material-ui/icons/Straighten'
+import { Eye } from 'react-feather';
 
 import Breadcrumb from 'components/common/breadcrumb';
 import Datatable from 'components/common/datatable'
-import TakeMeasure from './take-measure'
+import TakeMeasure from '../take-measure'
 
 
 import { getOrders } from 'services/api'
 
 function OrderList() {
   const { url } = useRouteMatch();
+  const history = useHistory()
 
   const [state, setState] = useState({
     affectSteedIsVisible: false,
@@ -97,6 +99,11 @@ function OrderList() {
     {
       Header: 'Total',
       accessor: 'total',
+      Cell: (row) => (
+        <span>
+          {row.original.total} FCFA
+        </span>
+      ),
       style: {
         textAlign: 'center'
       }
@@ -121,13 +128,24 @@ function OrderList() {
       accessor: () => "delete",
       Cell: (row) => (
         <div>
-          {row.original.etat == 1 ? (
+          {(row.original.etat == 1 && row.original.panier.articles.findIndex(item => item.pivot.EtatConfection != 0) == -1) && (
             <Straighten 
               fontSize="small" 
               style={{color: 'rgb(102, 209, 212)', cursor: 'pointer'}}
               onClick={() => handleTakeMeasure(row.original)}
             />
-          ): '---'}
+          )}
+          {' '}
+          <Eye 
+            fontSize="small" 
+            style={{color: 'rgb(102, 209, 212)', cursor: 'pointer'}}
+            onClick={() => {
+              history.push({
+                pathname: `${url}/${row.original.id}/detail`,
+                state: {order: row.original}
+              })
+            }}
+          />
         </div>
       ),
       style: {

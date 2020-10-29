@@ -18,9 +18,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 //Pages
-import Dashboard from './components/pages/dashboard';
+// import Dashboard from './components/pages/dashboard';
 import Login from './components/pages/auth/login';
-import Profile from './components/pages/profile';
+// import Profile from './components/pages/profile';
 import Order from './components/pages/order';
 
 import { createBrowserHistory } from 'history';
@@ -36,9 +36,9 @@ function Root() {
                         <Route exact path={`/login`} component={Login} />
 
                         {/* private */}
-                        <PrivateRoute exact path={`/`} component={Dashboard} />
+                        <PrivateRoute exact path={`/`} component={Order} />
                         
-                        <PrivateRoute path={`/profil`} component={Profile} />
+                        {/* <PrivateRoute path={`/profil`} component={Profile} /> */}
 
                         <PrivateRoute path={`/commandes`} component={Order} />
 

@@ -85,3 +85,8 @@ export function addMeasure(orderId,data,sCallBack,eCallBack){
     const url = `${API_ROUTE}/coursier/commande/mesure/${orderId}`
     exeRequest(url,"POST",data,sCallBack,eCallBack)
 }
+
+export function getOrderDetail(orderId,sCallBack,eCallBack){
+    const url = `${API_ROUTE}/coursier/commande/${orderId}`
+    exeRequest(url,"GET",null,sCallBack,eCallBack)
+}
