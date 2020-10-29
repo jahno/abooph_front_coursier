@@ -24,8 +24,8 @@ export default function App({children}) {
             <div className="page-wrapper" >
                 <Header />
                 <div className="page-body-wrapper">
-                    <Sidebar/>
-                    <RightSidebar/>
+                    {/* <Sidebar/> */}
+                    {/* <RightSidebar/> */}
                     <div className="page-body">
                         {children}
                     </div>

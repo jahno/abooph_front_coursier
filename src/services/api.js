@@ -73,7 +73,6 @@ export function getArticles(page,sCallBack,eCallBack){
     exeRequest(url,"GET",null,sCallBack,eCallBack)
 }
 
-// Recuperer les commandes
 export function getOrders(page,sCallBack,eCallBack){
     let url = `${API_ROUTE}/coursier/commande`
     if(page) url = `${API_ROUTE}/coursier/commande?page=${page}`

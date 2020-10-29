@@ -1,4 +1,13 @@
 import React, { Component,Fragment } from 'react'
+
+import { Button } from 'antd';
+import {
+    Home,
+    ShoppingCart
+} from 'react-feather';
+import { withRouter } from 'react-router-dom'
+import { Hidden } from '@material-ui/core';
+
 import SearchHeader from './searchHeader';
 import Notification from './notification';
 import UserMenu from './user-menu';
@@ -6,7 +15,7 @@ import Language from './language';
 import { AlignLeft, Maximize2, Bell, MessageSquare, MoreHorizontal } from 'react-feather';
 
 //images
-import logo from '../../../assets/images/dashboard/multikart-logo.png'
+import logo from 'assets/images/dashboard/multikart-logo.png'
 
 export class Header extends Component {
     constructor(props) {
@@ -31,6 +40,7 @@ export class Header extends Component {
             document.querySelector(".right-sidebar").classList.remove('show');
         }
     }
+
     goFull = () => {
         if ((document.fullScreenElement && document.fullScreenElement !== null) ||
             (!document.mozFullScreen && !document.webkitIsFullScreen)) {
@@ -51,47 +61,57 @@ export class Header extends Component {
             }
         }
     }
-    openCloseSidebar = () => {
-        if (this.state.sidebar) {
-            this.setState({ sidebar: false })
-            document.querySelector(".page-main-header").classList.add('open');
-            document.querySelector(".page-sidebar").classList.add('open');
-        } else {
-            this.setState({ sidebar: true })
-            document.querySelector(".page-main-header").classList.remove('open');
-            document.querySelector(".page-sidebar").classList.remove('open');
-        }
-    }
-    componentDidMount(){
-        if(window.innerWidth < 992){
-            this.setState({ sidebar: false })
-            document.querySelector(".page-main-header").classList.add('open');
-            document.querySelector(".page-sidebar").classList.add('open');
-        }
-    }
+
     render() {
         return (
             <Fragment>
                 {/* open */}
-                <div className="page-main-header ">
+                <div className="page-main-header open ">
                     <div className="main-header-right row">
                         <div className="main-header-left d-lg-none" >
                             <div className="logo-wrapper">
                                 <a href="index.html">
-                                    <img className="blur-up lazyloaded" src={logo} alt="" />
+                                    {/* <img className="blur-up lazyloaded" src={logo} alt="" /> */}
                                 </a>
                             </div>
                         </div>
                         <div className="mobile-sidebar">
                             <div className="media-body text-right switch-sm">
-                                <label className="switch"><a onClick={this.openCloseSidebar}><AlignLeft /></a></label>
+                                <div className="logo-wrapper">
+                                    <a href="index.html">
+                                        <img className="blur-up lazyloaded" src={logo} alt="" />
+                                    </a>
+                                </div>
+                                {/* <label className="switch"><a onClick={this.openCloseSidebar}><AlignLeft /></a></label> */}
                             </div>
                         </div>
                         <div className="nav-right col">
                             <ul className={"nav-menus " + (this.state.navMenus ? 'open' : '')}>
                                 <li>
+                                    <Hidden smUp>
+                                        <Home onClick={() => this.props.history.push('/')}/>
+                                    </Hidden>
+
+                                    <Hidden xsDown>
+                                        <Button onClick={() => this.props.history.push('/')} type="link">Dashboard</Button>
+                                    </Hidden>
+                                </li>
+
+                                <li>
+                                    <Hidden smUp>
+                                        <ShoppingCart onClick={() => this.props.history.push('/commandes')}/>
+
+                                    </Hidden>
+
+                                    <Hidden xsDown>
+                                        <Button onClick={() => this.props.history.push('/commandes')} type="link">Commandes</Button>
+                                    </Hidden>
+                                </li>
+
+                                <li>
                                     <SearchHeader />
                                 </li>
+
                                 <li><a onClick={this.goFull} className="text-dark" href="#!"><Maximize2 /></a></li>
 
                                 <UserMenu />
@@ -105,4 +125,4 @@ export class Header extends Component {
     }
 }
 
-export default Header
+export default withRouter(Header)

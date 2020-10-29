@@ -75,7 +75,6 @@ export class sidebar extends Component {
         const theme = {
             selectionColor: "#C51162"
         };
-
         const mainmenu = this.state.mainmenu.map((menuItem, i) =>
             <li className={`${menuItem.active ? 'active' : ''}`} key={i}>
                 {(menuItem.sidebartitle) ?
@@ -145,7 +144,7 @@ export class sidebar extends Component {
 
         return (
             <Fragment>
-                <div className="page-sidebar">
+                <div className="page-sidebar open">
                     <div className="main-header-left d-none d-lg-block">
                         <div className="logo-wrapper">
                             <Link to={`${process.env.PUBLIC_URL}/dashboard`}>
