@@ -56,12 +56,12 @@ function ArticleDetail() {
                             <div className="product-page-details product-right mb-0">
                                 <h2>Mesures</h2>
                                 <hr />
-                                {order.mesure && order.mesure.descriptions && JSON.parse(order.mesure.descriptions).description.map(item => (
+                                {/* {order.mesure && order.mesure.descriptions && JSON.parse(order.mesure.descriptions).description.map(item => (
                                     <>
                                         <h6 className="product-title">{item.label}</h6>
                                         <p>{item.value}</p>
                                     </>
-                                ))}
+                                ))} */}
                             </div>
                         </div>
                     </div>

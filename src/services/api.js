@@ -85,6 +85,11 @@ export function addMeasure(orderId,data,sCallBack,eCallBack){
     exeRequest(url,"POST",data,sCallBack,eCallBack)
 }
 
+export function gakeMeasuresBySex(sex,sCallBack,eCallBack){
+    const url = `${API_ROUTE}/coursier/mesure/${sex || 'homme'}`
+    exeRequest(url,"GET",null,sCallBack,eCallBack)
+}
+
 export function getOrderDetail(orderId,sCallBack,eCallBack){
     const url = `${API_ROUTE}/coursier/commande/${orderId}`
     exeRequest(url,"GET",null,sCallBack,eCallBack)
