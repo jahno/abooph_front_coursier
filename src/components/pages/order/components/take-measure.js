@@ -7,7 +7,6 @@ import { addMeasure, gakeMeasuresBySex } from 'services/api'
 export default function TakeMeasure(props) {
     const { visible, handleCancel, order } = props
 
-    console.log(order);
     const [ state, setState ] = useState({
         isLoading: true,
         visible: false,
@@ -28,14 +27,13 @@ export default function TakeMeasure(props) {
     },[])
 
     const onFinish = values => {
-        const newValues = [...values.description]
+        const newValues = values.description ? [...values.description] : []
 
         for (const property in values) {
-            if(property != 'description')(
+            if(property != 'description'){
                 newValues.push({label: property, value: values[property]})
-            )
+            }
         }
-
 
         setState(state => ({
             ...state,
@@ -83,7 +81,7 @@ export default function TakeMeasure(props) {
             */}
 
             {state.measures.map(item => (
-                <Form.Item labelAlign='left' name={item.Libelle} label={item.Libelle} rules={[{ required: true, message: 'Valeur obligatoire' }]}>
+                <Form.Item key={item.id} labelAlign='left' name={item.Libelle} label={item.Libelle} rules={[{ required: true, message: 'Valeur obligatoire' }]}>
                     <Input />
                 </Form.Item>
             ))}

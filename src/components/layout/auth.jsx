@@ -29,7 +29,9 @@ export default function AuthLayout ({children}) {
                                         <div>
                                             <div>
                                                 <h3>Abooph Coursier</h3>
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                                                <p>La section courtier vous permet de voir vos commandes et gérer les livraisons des colis.
+                                                <i> La couture sur mesure en un clic</i>
+                                                </p>
                                             </div>
                                         </div>
                                     </Slider >

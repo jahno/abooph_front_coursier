@@ -43,6 +43,7 @@ function Login({signIn, isAuthenticated, location}) {
                             name="login[email]" 
                             type="email" 
                             placeholder="Votre email" 
+                            disabled={state.isLoading}
                             validate={{
                                 required: {value: true, errorMessage: 'Svp veuillez renseigner votre email'},
                                 email: {value: true, errorMessage: "Votre email est invalide"},
@@ -58,6 +59,7 @@ function Login({signIn, isAuthenticated, location}) {
                             name="login[password]" 
                             type="password" 
                             placeholder="Votre mot de passe" 
+                            disabled={state.isLoading}
                             validate={{
                                 required: {value: true, errorMessage: 'Svp veuillez renseigner votre mot de passe'},
                                 pattern: {value: '^[A-Za-z0-9]+$', errorMessage: ""},

@@ -24,6 +24,7 @@ export default function useData(){
                 setState(state => ({
                     ...state, 
                     isLoading: false,
+                    takeMeasureIsVisible: false,
                     canTakeMeasure: response.panier.articles.findIndex(item => item.pivot.EtatConfection != 0) == -1 ? true : false,
                     order: response
                 }));

@@ -31,7 +31,7 @@ function ArticleDetail() {
             </Backdrop>
         )
     }
-    
+
     return (
         <Fragment>
             <Breadcrumb title="Détail Commande" parent="Commandes" parentUrl="commandes"/>
@@ -69,7 +69,7 @@ function ArticleDetail() {
 
                 {order.panier.articles.map(article => {
                     return (
-                        <div className="card">
+                        <div className="card" key={article.id}>
                             <div className="row product-page-main card-body">
                                 <div className="col-xl-4">
                                     <Slider 
